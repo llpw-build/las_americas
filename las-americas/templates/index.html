@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Las Americas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Home | Las Americas
+{% endblock %}
+
+{% block content %}
+<section class="hero">
     <h1>Las Americas</h1>
-    <p>Welcome to Las Americas Grill online booking.</p>
-    
-</body>
-</html>
+    <p>Book your table online at Las Americas Grill without needing to call or queue.</p>
+    <a href="{% url 'book_table' %}" class="button">Book a Table</a>
+</section>
+
+<section class="intro">
+    <h2>Online Restaurant Booking Made Simple</h2>
+    <p>
+        Las Americas allows customers to create, view, edit and cancel restaurant bookings online.
+        The system helps customers save time while allowing the restaurant to manage reservations more efficiently.
+    </p>
+</section>
+{% endblock %}
