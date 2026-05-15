@@ -1,14 +1,29 @@
 {% extends 'base.html' %}
 
 {% block title %}
-My Bookings | Las Americas
+My Bookings
 {% endblock %}
 
 {% block content %}
+
 <section class="page-section">
+
     <h1>My Bookings</h1>
-    <p>
-        Customers will be able to view, edit and cancel their upcoming bookings from this page.
-    </p>
-</section>
-{% endblock %}
+
+    {% for booking in bookings %}
+
+        <div class="booking-card">
+
+            <h3>
+                Table {{ booking.table.table_number }}
+            </h3>
+
+            <p>Date: {{ booking.booking_date }}</p>
+
+            <p>Time: {{ booking.booking_time }}</p>
+
+            <p>Guests: {{ booking.number_of_guests }}</p>
+
+            <p>{{ booking.customer_message }}</p>
+
+        </div>

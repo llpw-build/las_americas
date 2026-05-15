@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Booking
+{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+
+    <h1>Delete Booking</h1>
+
+    <p>
+        Are you sure you want to delete this booking?
+    </p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <button type="submit" class="button">
+            Confirm Delete
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}
