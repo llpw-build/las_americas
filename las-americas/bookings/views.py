@@ -71,6 +71,10 @@ def edit_booking(request, booking_id):
 
             return redirect("my_bookings")
 
+    else:
+
+        form = BookingForm(instance=booking)
+
     return render(
         request,
         "edit_booking.html",
