@@ -1,29 +1,25 @@
-{% extends 'base.html' %}
-
-{% block title %}
-My Bookings
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %} My Bookings {% endblock %} {% block
+content %}
 
 <section class="page-section">
+  <h1>My Bookings</h1>
 
-    <h1>My Bookings</h1>
+  {% for booking in bookings %}
 
-    {% for booking in bookings %}
+  <div class="booking-card">
+    <h3>Table {{ booking.table.table_number }}</h3>
 
-        <div class="booking-card">
+    <p>Date: {{ booking.booking_date }}</p>
 
-            <h3>
-                Table {{ booking.table.table_number }}
-            </h3>
+    <p>Time: {{ booking.booking_time }}</p>
 
-            <p>Date: {{ booking.booking_date }}</p>
+    <p>Guests: {{ booking.number_of_guests }}</p>
 
-            <p>Time: {{ booking.booking_time }}</p>
+    <p>{{ booking.customer_message }}</p>
 
-            <p>Guests: {{ booking.number_of_guests }}</p>
+    <a href="{% url 'edit_booking' booking.id %}" class="button"> Edit </a>
 
-            <p>{{ booking.customer_message }}</p>
-
-        </div>
+    <a href="{% url 'delete_booking' booking.id %}" class="button"> Delete </a>
+    
+  </div>
+</section>
