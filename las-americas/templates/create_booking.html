@@ -1,27 +1,22 @@
-{% extends 'base.html' %}
-
-{% block title %}
-Create Booking
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %} Create Booking {% endblock %} {%
+block content %}
 
 <section class="page-section">
+  <h1>Create Booking</h1>
 
-    <h1>Create Booking</h1>
+  <form method="POST">
+    {% csrf_token %}
+    
+    {% if form.errors %}
+        <div class="form-errors">
+            <p>Please correct the errors below.</p>
+        </div>
+    {% endif %} 
+    
+    {{ form.as_p }}
 
-    <form method="POST">
-
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <button type="submit" class="button">
-            Create Booking
-        </button>
-
-    </form>
-
+    <button type="submit" class="button">Create Booking</button>
+  </form>
 </section>
 
 {% endblock %}
