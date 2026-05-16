@@ -104,3 +104,11 @@ footer {
     border-radius: 8px;
     margin-bottom: 1rem;
 }
+
+.message {
+    background-color: #dff0d8;
+    color: #2e6b2e;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
