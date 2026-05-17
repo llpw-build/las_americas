@@ -1,25 +1,59 @@
-{% extends 'base.html' %} {% block title %} My Bookings {% endblock %} {% block
-content %}
+{% extends 'base.html' %}
+
+{% block title %}
+My Bookings
+{% endblock %}
+
+{% block content %}
 
 <section class="page-section">
-  <h1>My Bookings</h1>
 
-  {% for booking in bookings %}
+    <h1>My Bookings</h1>
 
-  <div class="booking-card">
-    <h3>Table {{ booking.table.table_number }}</h3>
+    {% for booking in bookings %}
 
-    <p>Date: {{ booking.booking_date }}</p>
+        <div class="booking-card">
 
-    <p>Time: {{ booking.booking_time }}</p>
+            <h3>Table {{ booking.table.table_number }}</h3>
 
-    <p>Guests: {{ booking.number_of_guests }}</p>
+            <p>Date: {{ booking.booking_date }}</p>
 
-    <p>{{ booking.customer_message }}</p>
+            <p>Time: {{ booking.booking_time }}</p>
 
-    <a href="{% url 'edit_booking' booking.id %}" class="button"> Edit </a>
+            <p>Guests: {{ booking.number_of_guests }}</p>
 
-    <a href="{% url 'delete_booking' booking.id %}" class="button"> Delete </a>
-    
-  </div>
+            
+          <div class="booking-card">
+
+            <a href="{% url 'edit_booking' booking.id %}" class="button">
+                Edit
+            </a>
+
+            <a href="{% url 'delete_booking' booking.id %}" class="button">
+                Delete
+            </a>
+          </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="empty-message">
+
+            <h3>No bookings found</h3>
+
+            <p>
+                You have not made any restaurant bookings yet.
+            </p>
+
+            <a href="{% url 'create_booking' %}" class="button">
+                Make your first booking
+            </a>
+
+        </div>
+
+    {% endfor %}
+
 </section>
+
+{% endblock %}

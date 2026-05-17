@@ -112,3 +112,16 @@ footer {
     border-radius: 8px;
     margin-bottom: 1rem;
 }
+
+.empty-message {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.booking-card {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}

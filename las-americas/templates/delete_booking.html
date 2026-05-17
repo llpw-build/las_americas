@@ -11,7 +11,13 @@ Delete Booking
     <h1>Delete Booking</h1>
 
     <p>
-        Are you sure you want to delete this booking?
+        Are you sure you want to permanently delete this booking?
+    </p>
+
+    <p>
+        Table {{ booking.table.table_number }}
+        on {{ booking.booking_date }}
+        at {{ booking.booking_time }}
     </p>
 
     <form method="POST">

@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Booking
 from .forms import BookingForm
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -18,6 +20,7 @@ def my_bookings(request):
 def contact(request):
     return render(request, 'contact.html')
 
+@login_required
 def create_booking(request):
 
     if request.method == "POST":
@@ -27,6 +30,11 @@ def create_booking(request):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.save()
+
+            messages.success(
+                request,
+                "Bookings created successfully.",
+            )
 
             return redirect("my_bookings")
 
@@ -39,6 +47,7 @@ def create_booking(request):
         {"form": form},
     )
 
+@login_required
 def my_bookings(request):
 
     bookings = Booking.objects.filter(user=request.user)
@@ -51,6 +60,7 @@ def my_bookings(request):
         context,
     )
 
+@login_required
 def edit_booking(request, booking_id):
 
     booking = get_object_or_404(
@@ -69,6 +79,11 @@ def edit_booking(request, booking_id):
         if form.is_valid():
             form.save()
 
+            messages.success(
+                request,
+                "Bookings created successfully.",
+            )
+
             return redirect("my_bookings")
 
     else:
@@ -84,6 +99,7 @@ def edit_booking(request, booking_id):
         },
     )
 
+@login_required
 def delete_booking(request, booking_id):
 
     booking = get_object_or_404(
@@ -95,6 +111,11 @@ def delete_booking(request, booking_id):
     if request.method == "POST":
 
         booking.delete()
+        
+        messages.success(
+            request,
+            "Booking deleted successfully"
+        )
 
         return redirect("my_bookings")
 
